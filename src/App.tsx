@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 // Components
 import Item from "./Item/Item";
+import Cart from "./Cart/Cart";
 // @mui stuff
 import Drawer from "@mui/material/Drawer";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -51,7 +52,11 @@ function App() {
 				open={cartOpen}
 				onClose={() => setCartOpen(false)}
 			>
-				Cart Goes Here
+				<Cart
+					cartItems={cartItems}
+					addToCart={handleAddToCart}
+					removeFromCart={handleRemoveFromCart}
+				/>
 			</Drawer>
 			<StyledButton onClick={() => setCartOpen(true)}>
 				<Badge badgeContent={getTotalItems(cartItems)} color="error">
